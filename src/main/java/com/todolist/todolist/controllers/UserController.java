@@ -2,6 +2,7 @@ package com.todolist.todolist.controllers;
 
 import com.todolist.todolist.models.User;
 import com.todolist.todolist.repositories.UserRepository;
+import com.todolist.todolist.repositories.dto.UserDto;
 import com.todolist.todolist.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class UserController {
 
     @GetMapping
     @ResponseBody
-    public List<User> createAllPersons(){
+    public List<UserDto> createAllPersons(){
         return userService.getAllUsers();
     }
 

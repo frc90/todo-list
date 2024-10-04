@@ -1,11 +1,12 @@
 package com.todolist.todolist.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+import java.util.List;
+
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -20,4 +21,12 @@ public class User {
     private String email;
     private String user;
     private String password;
+
+    @OneToMany(
+            orphanRemoval = true,
+            mappedBy = "user",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL
+    )
+    private List<Task> tasks;
 }

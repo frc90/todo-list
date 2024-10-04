@@ -2,6 +2,7 @@ package com.todolist.todolist.services;
 
 import com.todolist.todolist.models.User;
 import com.todolist.todolist.repositories.UserRepository;
+import com.todolist.todolist.repositories.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,8 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
+    public List<UserDto> getAllUsers(){
+        return UserDto.getUserWithTask(userRepository.findAll());
     }
 
     public User createUser(User user) {

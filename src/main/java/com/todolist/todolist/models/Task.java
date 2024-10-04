@@ -7,7 +7,6 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@Data
 @Entity
 public class Task {
     @Id
@@ -16,4 +15,8 @@ public class Task {
 
     private String name;
     private boolean state;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

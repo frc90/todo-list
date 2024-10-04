@@ -2,6 +2,7 @@ package com.todolist.todolist.services;
 
 import com.todolist.todolist.models.Task;
 import com.todolist.todolist.repositories.TaskRepository;
+import com.todolist.todolist.repositories.dto.TaskDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +13,8 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
-    public List<Task> getAllTask(){
-        return taskRepository.findAll();
+    public List<TaskDto> getAllTask(){
+        return TaskDto.getAllTaskWithUser(taskRepository.findAll());
     }
 
     public Task createTask(Task task){
@@ -34,6 +35,9 @@ public class TaskService {
         if (t != null) {
             t.setName(task.getName());
             t.setState(task.isState());
+            t.setUser(task.getUser());
+            System.out.println("task: " + task.toString());
+            System.out.println("updated task: " + t.toString());
             taskRepository.save(t);
             return "Task was updated with exits";
         }

@@ -1,6 +1,7 @@
 package com.todolist.todolist.controllers;
 
 import com.todolist.todolist.models.Task;
+import com.todolist.todolist.repositories.dto.TaskDto;
 import com.todolist.todolist.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public class TaskController {
     private TaskService taskService;
 
     @GetMapping
-    public List<Task> getAllTask(){
+    public List<TaskDto> getAllTask(){
         return taskService.getAllTask();
     }
     @PostMapping
