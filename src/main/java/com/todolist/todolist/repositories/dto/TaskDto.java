@@ -22,10 +22,10 @@ public class TaskDto {
     private boolean state;
     private UserClass user;
 
-    public TaskDto(Integer id, String name, String lastname, String email, UserClass user) {
+    public TaskDto(Integer id, String name, Boolean state, String email, UserClass user) {
         this.id = id;
         this.name = name;
-        this.state = isState();
+        this.state = state;
         this.user = user;
     }
 
